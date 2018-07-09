@@ -1,0 +1,38 @@
+{
+    "name": "DominKey Extension",
+    "description": "DominKey extension helps you to directly insert your complex password into your favourites sites.",
+    "version": "1.0",
+    "manifest_version": 2,
+  
+  
+    "browser_action": {
+        "default_icon": {
+            "16": "logo/dominkey_logo_16.png",
+            "32": "logo/dominkey_logo_32.png",
+            "48": "logo/dominkey_logo_48.png",
+            "128": "logo/dominkey_logo_128.png"
+          },
+          "default_popup": "popup.html"
+    },
+    
+    "commands": {
+      "_execute_browser_action": {
+        "suggested_key": {
+          "windows": "Ctrl+Y",
+          "mac": "Command+Y",
+          "linux": "Ctrl+Y"
+        }
+      }
+    },
+  
+    "permissions": [
+      "http://*/*",
+      "https://*/*",
+      "activeTab",
+      "nativeMessaging",
+      "tabs",
+      "webRequest",
+      "webRequestBlocking",
+      "clipboardWrite"
+    ]
+  }
