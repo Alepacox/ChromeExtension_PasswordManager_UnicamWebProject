@@ -18,22 +18,9 @@ body {
     border-bottom: 1px dotted gray;
   }
   
-  .attempts{
+  .description{
     margin: 40px 10px;
     text-align: center;
-  }
-  
-  number{
-    display: inline-block;
-    height: 32px;
-    font-size: 13px;
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 32px;
-    padding: 0 12px;
-    border-radius: 16px;
-    background-color: #008080;
-    margin: 0 5px;
   }
   
   .buttons{
@@ -68,8 +55,4 @@ body {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   }
   
-  .button.raised:active {
-    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-    transition-delay: 0s;
-  }
   

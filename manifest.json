@@ -12,7 +12,7 @@
             "48": "logo/dominkey_logo_48.png",
             "128": "logo/dominkey_logo_128.png"
           },
-          "default_popup": "popup.html"
+          "default_popup": "views/popup/popup.html"
     },
     
     "commands": {
