@@ -4,9 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function login() {
   var email = document.getElementById('inputMail').value;
-  console.log(email);
   var masterkey = document.getElementById('inputMasterkey').value;
-  console.log(masterkey);
   if (emailValidation(email) || masterkey == undefined) {
     var body = { email: email, masterkey: masterkey };
     fetch('http://localhost:8000/api/login', {
@@ -16,8 +14,7 @@ function login() {
       if (val.logged == true) {
         console.log(val.token);
         localStorage.setItem("token", val.token);
-        chrome.runtime.sendMessage({getdomains: "true"}, function(response) {
-          console.log(response.done);
+        chrome.runtime.sendMessage({ getdomains: "true" }, {
         });
         chrome.tabs.getCurrent(function (tab) {
           chrome.tabs.remove(tab.id, function () { });
@@ -28,7 +25,9 @@ function login() {
         email = null;
         masterkey = null;
       }
-    })
+    }).catch((err) => {
+      console.error("No server connection");
+    });
   } else alert("Inserisci tutti i parametri correttamente");
 }
 

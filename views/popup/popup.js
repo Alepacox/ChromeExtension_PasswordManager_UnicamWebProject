@@ -3,16 +3,23 @@ window.onload = function () {
     var loginButton = document.getElementById('loginButton');
     if (localStorage.getItem('token') != null) {
         loginButton.innerHTML = "Logout";
-        loginButton.addEventListener('click', logout);
+        loginButton.addEventListener('click', sendLogoutMessage);
         var description = document.getElementById('description');
-        readDomains(description);
+        readCurrentDomain(description);
     } else {
         loginButton.addEventListener('click', openLoginPage);
     }
 }
 
+function sendLogoutMessage(){
+    chrome.runtime.sendMessage({ logout: "true" }, {});
+    loginButton.innerHTML = "Login";
+    loginButton.addEventListener('click', openLoginPage);
+    document.getElementById('description').innerHTML = "Effettua il login per iniziare ad usare DominKey";
+}
 
-function readDomains(description) {
+
+function readCurrentDomain(description) {
     chrome.tabs.query({ //This method output active URL 
         "active": true,
     }, function (tabs) {
@@ -35,16 +42,5 @@ function openLoginPage() {
     chrome.tabs.create({ url: chrome.extension.getURL("../views/login/login.html") });
 }
 
-function logout() {
-    var url = new URL('http://localhost:8000/api/logout');
-    url.searchParams.append('token', localStorage.getItem('token'));
-    fetch(url, {
-        method: "GET",
-    }).then(res => res.json()).then(val => {
-        localStorage.removeItem('token');
-        loginButton.innerHTML = "Login";
-        loginButton.addEventListener('click', openLoginPage);
-        document.getElementById('description').innerHTML="Effettua il login per iniziare ad usare DominKey";
-        })
 
-}
+
