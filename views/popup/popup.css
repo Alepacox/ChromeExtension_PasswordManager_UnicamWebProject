@@ -30,6 +30,7 @@ body {
   }
   
   .button{
+    cursor: pointer;
     display: inline-block;
     position: relative;
     width: 140px;

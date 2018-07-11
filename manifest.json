@@ -24,15 +24,18 @@
         }
       }
     },
+
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+    
   
     "permissions": [
-      "http://*/*",
-      "https://*/*",
+      "storage",
+      "webNavigation",
       "activeTab",
-      "nativeMessaging",
       "tabs",
-      "webRequest",
-      "webRequestBlocking",
       "clipboardWrite"
     ]
   }
