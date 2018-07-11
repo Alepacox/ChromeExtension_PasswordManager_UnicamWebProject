@@ -38,8 +38,6 @@
     
   
     "permissions": [
-      "storage",
-      "webNavigation",
       "activeTab",
       "tabs",
       "clipboardWrite"
