@@ -2,7 +2,6 @@ function loadDomains() {
     if (localStorage.getItem('token') != null) {
     var url = new URL('http://localhost:8000/api/domain/getall');
     url.searchParams.append('token', localStorage.getItem('token'));
-    console.log(url);
     fetch(url, {
         method: "GET",
     }).then(res => res.json()).then(val => {
