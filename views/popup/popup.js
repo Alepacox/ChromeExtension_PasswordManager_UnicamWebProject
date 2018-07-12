@@ -4,7 +4,7 @@ window.onload = function () {
     if (localStorage.getItem('token') != null) {
         loginButton.innerHTML = "Logout";
         loginButton.addEventListener('click', function () { chrome.runtime.sendMessage({ logout: true, expired: false }, {}); });
-        document.getElementById('description').innerHTML = "Sto scaricando il caricando il contenuto dalla pagina";
+        document.getElementById('description').innerHTML = "Sto scaricando il contenuto dalla pagina";
         checkForSavedDomains();
     } else {
         loginButton.addEventListener('click', openLoginPage);

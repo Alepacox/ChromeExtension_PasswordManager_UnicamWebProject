@@ -1,47 +1,49 @@
 {
-    "name": "DominKey Extension",
-    "description": "DominKey extension helps you to directly insert your complex password into your favourites sites.",
-    "version": "1.0",
-    "manifest_version": 2,
-  
-  
-    "browser_action": {
-        "default_icon": {
-            "16": "logo/dominkey_logo_16.png",
-            "32": "logo/dominkey_logo_32.png",
-            "48": "logo/dominkey_logo_48.png",
-            "128": "logo/dominkey_logo_128.png"
-          },
-          "default_popup": "views/popup/popup.html"
-    },
-    "icons": {
+  "name": "DominKey Extension",
+  "description": "L'estensione DominKey ti permette di inserire direttamente le password salvate nei tuoi siti preferiti",
+  "version": "1.0",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_icon": {
       "16": "logo/dominkey_logo_16.png",
       "32": "logo/dominkey_logo_32.png",
       "48": "logo/dominkey_logo_48.png",
       "128": "logo/dominkey_logo_128.png"
     },
-    
-    "commands": {
-      "_execute_browser_action": {
-        "suggested_key": {
-          "windows": "Ctrl+Y",
-          "mac": "Command+Y",
-          "linux": "Ctrl+Y"
-        }
+    "default_popup": "views/popup/popup.html"
+  },
+  "icons": {
+    "16": "logo/dominkey_logo_16.png",
+    "32": "logo/dominkey_logo_32.png",
+    "48": "logo/dominkey_logo_48.png",
+    "128": "logo/dominkey_logo_128.png"
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "windows": "Ctrl+Y",
+        "mac": "Command+Y",
+        "linux": "Ctrl+Y"
       }
-    },
-
-    "background": {
-      "scripts": ["background.js"],
-      "persistent": false
-    },
-    "content_scripts": [{
-      "matches": ["*://*/*"],
-      "js": ["content.js"]
-    }],
-    
-  
-    "permissions": [
-      "activeTab"
-    ]
-  }
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "activeTab"
+  ]
+}
