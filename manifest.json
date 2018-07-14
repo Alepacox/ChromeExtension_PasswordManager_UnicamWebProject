@@ -1,6 +1,6 @@
 {
   "name": "DominKey Extension",
-  "description": "L'estensione DominKey ti permette di inserire direttamente le password salvate nei tuoi siti preferiti",
+  "description": "L'estensione DominKey ti permette di inserire direttamente le password salvate nei tuoi siti preferiti!",
   "version": "1.0",
   "manifest_version": 2,
   "browser_action": {

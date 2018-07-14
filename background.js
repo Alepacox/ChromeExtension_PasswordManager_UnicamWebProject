@@ -36,11 +36,11 @@ function checkDomain(urlDomain) {
     }).then(res => res.json()).catch((err) => {
         console.error("No server connection");
     }).then(val => {
-        if (Object.prototype.hasOwnProperty.call(val, 'authenticated')) {
+        if (val.authenticated ==false ) {
             logout(true);
         } else if (val.foundDomain == true) {
             chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-                return getPasswordForDomain(val.domain[0].id).then((psw) => {
+                return getPasswordForDomain(val.domain.id).then((psw) => {
                     chrome.tabs.sendMessage(tabs[0].id, { checkForForm: true, password: psw }, function (response) {
                         if (response != undefined) {
                             if (response.foundPswForm == true) {
@@ -64,7 +64,7 @@ function getPasswordForDomain(domainId) {
         }).then(res => res.json()).catch((err) => {
             console.error("No server connection");
         }).then(val => {
-            resolve(val[0].PASSWORD);
+            resolve(val.password);
         });
     }).then((psw) => {
         return psw;
