@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
 function login() {
   var email = document.getElementById('inputMail').value;
   var masterkey = document.getElementById('inputMasterkey').value;
-  if (emailValidation(email) || masterkey == undefined) {
-    if (masterkey >= 8) {
+  if (emailValidation(email) && masterkey != undefined) {
+    if (masterkey.length >= 8) {
       var body = { email: email, masterkey: masterkey };
       fetch('http://localhost:8000/api/login', {
         method: "POST",
