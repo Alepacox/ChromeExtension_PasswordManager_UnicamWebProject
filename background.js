@@ -19,7 +19,7 @@ function logout(expired) {
         fetch(url, {
             method: "GET",
         }).catch((err) => {
-            console.log(err);
+            chrome.runtime.sendMessage({ updateDescription: true, text: "Si è verificato un problema" }, {});
         });
     } else chrome.runtime.sendMessage({ updateDescription: true, text: "Sessione scaduta, effettua nuovamente il login per utilizzare DominKey" }, {});
     chrome.runtime.sendMessage({ updateButtonLogin: true }, {});
@@ -33,9 +33,7 @@ function checkDomain(urlDomain) {
     url.searchParams.append('token', localStorage.getItem('token'));
     fetch(url, {
         method: "GET",
-    }).then(res => res.json()).catch((err) => {
-        console.error("No server connection");
-    }).then(val => {
+    }).then(res => res.json()).then(val => {
         if (val.authenticated ==false ) {
             logout(true);
         } else if (val.foundDomain == true) {
@@ -51,6 +49,8 @@ function checkDomain(urlDomain) {
                 });
             });
         } else chrome.runtime.sendMessage({ updateDescription: true, text: "Nessuna password trovata per questo dominio" }, {});
+    }).catch((err) => {
+        chrome.runtime.sendMessage({ updateDescription: true, text: "Si è verificato un problema" }, {});
     });
 }
 
@@ -61,10 +61,10 @@ function getPasswordForDomain(domainId) {
         url.searchParams.append('token', localStorage.getItem('token'));
         fetch(url, {
             method: "GET",
-        }).then(res => res.json()).catch((err) => {
-            console.error("No server connection");
-        }).then(val => {
+        }).then(res => res.json()).then(val => {
             resolve(val.password);
+        }).catch((err) => {
+            chrome.runtime.sendMessage({ updateDescription: true, text: "Si è verificato un problema" }, {});
         });
     }).then((psw) => {
         return psw;
