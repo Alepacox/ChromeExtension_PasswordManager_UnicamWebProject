@@ -26,7 +26,7 @@ function login() {
           masterkey = null;
         }
       }).catch((err) => {
-        chrome.runtime.sendMessage({ updateDescription: true, text: "Si è verificato un problema" }, {});
+        alert("Si è verificato un problema");
       });
     } else {
       alert("Email o password errati");
